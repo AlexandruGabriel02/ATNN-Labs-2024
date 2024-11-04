@@ -1,0 +1,131 @@
+{
+"transforms": [
+        {
+            "train": {
+                "initial": [
+                    {
+                        "name": "ToImage"
+                    },
+                    {
+                        "name": "ToDtype",
+                        "args": {
+                            "dtype": "float32",
+                            "scale": true
+                        }
+                    },
+                    {
+                        "name": "Normalize",
+                        "args": {
+                            "mean": [0.507, 0.4865, 0.4409],
+                            "std": [0.507, 0.4865, 0.4409]
+                        }
+                    }
+                ]
+            },
+            "test": [
+                {
+                    "name": "ToImage"
+                },
+                {
+                    "name": "ToDtype",
+                    "args": {
+                        "dtype": "float32",
+                        "scale": true
+                    }
+                },
+                {
+                    "name": "Normalize",
+                    "args": {
+                        "mean": [0.507, 0.4865, 0.4409],
+                        "std": [0.507, 0.4865, 0.4409]
+                    }
+                }
+            ]
+        },
+        {
+            "train": {
+                "initial": [
+                    {
+                        "name": "ToImage"
+                    },
+                    {
+                        "name": "ToDtype",
+                        "args": {
+                            "dtype": "float32",
+                            "scale": true
+                        }
+                    },
+                    {
+                        "name": "Normalize",
+                        "args": {
+                            "mean": [0.507, 0.4865, 0.4409],
+                            "std": [0.507, 0.4865, 0.4409]
+                        }
+                    }
+                ],
+                "runtime": [
+                    {
+                        "name": "RandomCrop",
+                        "args": {
+                            "size": 32,
+                            "padding": 4
+                        }
+                    },
+                    {
+                        "name": "RandomHorizontalFlip",
+                        "args": {
+                            "p": 0.5
+                        }
+                    }
+                ]
+            },
+            "test": [
+                {
+                    "name": "ToImage"
+                },
+                {
+                    "name": "ToDtype",
+                    "args": {
+                        "dtype": "float32",
+                        "scale": true
+                    }
+                },
+                {
+                    "name": "Normalize",
+                    "args": {
+                        "mean": [0.507, 0.4865, 0.4409],
+                        "std": [0.507, 0.4865, 0.4409]
+                    }
+                }
+            ]
+        }
+    ],
+    "model": [
+        {
+            "name": "PreActResNet18_C100",
+            "source": "implemented"
+        },
+        {
+            "name": "VGG16",
+            "source": "implemented"
+        }
+    ],
+    "optimizer": [
+        {
+            "name": "SGD",
+            "args": {
+                "lr": 0.005,
+                "momentum": 0.9,
+                "weight_decay": 0.0005,
+                "nesterov": true
+            }
+        },
+        {
+            "name": "AdamW",
+            "args": {
+                "lr": 0.005,
+                "weight_decay": 0.01
+            }
+        }
+    ]
+}
